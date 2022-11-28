@@ -35,8 +35,8 @@ def std_dev(X, X_bar):
 def cov(X, X_bar, Y, Y_bar):
 	return numpy.sum((X-X_bar)*(Y-Y_bar), axis=0)
 
-textin_array = numpy.load("traces/textin_array.npy")
-trace_array = numpy.load("traces/trace_array.npy")
+textin_array = numpy.load("textin_array.npy")
+trace_array = numpy.load("trace_array.npy")
 
 t_bar = numpy.sum(trace_array, axis=0)/len(trace_array)
 o_t = numpy.sqrt(numpy.sum((trace_array - t_bar)**2, axis=0))
