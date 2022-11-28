@@ -1,0 +1,12 @@
+let input = "6dab1eeb8f9e9dca1d8a783e8acfad85efb06b2fada3e75e72875e";
+
+const CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+let output = [];
+for(let i = 0; i < input.length; i += 3){
+	let chunk = parseInt(input.substring(i, i + 3), 16)
+	output.push(CHARSET[(chunk >> 6) & 0x3f]);
+	output.push(CHARSET[(chunk >> 0) & 0x3f]);
+}
+
+console.log(`flag: esCTF{${output.join("")}}`);
