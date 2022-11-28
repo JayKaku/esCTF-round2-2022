@@ -19,6 +19,84 @@ Using RsaCtfTool.
 
 <<<
 == Neo's Forensics Training
+
+Neos’s Forensics Training
+Step 1:
+We received a zip file, which when we extracted the contents of revealed a 2Gb dump file of the system.
+
+image::images/neo_1.png[]
+
+Since the flag was bound to be somewhere in the system logs/files/secrets, I decided to do a string analysis of the file. I ran the command 
+```console
+strings bank_atm_dump > dump.txt
+
+```
+However, this returned a huge file, which caused nano and vim to crash. 
+
+image::images/neo_2.png[]
+
+Also, running 
+```console
+Cat dump.txt | grep esCTF{
+
+```
+
+image::images/neo_3.png[]
+
+However, after taking a look at previous challenges, this did not surprise me as the flag was bound to be encoded.
+Step 2:
+Since the initial string analysis failed, I decided to try and analyze the dump file using some nano. A few lines into dump.txt and I deduced that the machine from which the dump file originated was a windows machine
+
+image::images/neo_4.png[]
+
+On doing some research (I had never analyzed a dump file like this before, and neither had anyone in the team), I came across Volitility. I had heard about this tool on DarknetDiaries, but never bothered exploring it. After setting it up, I ran a few commands and saw how to use it. 
+
+image::images/neo_5.png[]
+
+During the initial analysis phase, I saw that the OS was windows, however, interestingly, I saw that the device also ran a VM for some purpose, probably to isolate the banking application from the host OS. This meant that I had a few places where the flag could be hidden
+The hash of the passwords of system users
+Environment variables
+System variables
+Cache data
+File names
+Somewhere in the configuration of the VM
+
+From my experience I know that windows is notoriously poor when it comes to storing passwords (#mimikatz) and so, I decided to try and see if I could try and dump the hashes of the users. If I decrypt them, I might get the flag and so, that is what I did!
+
+image::images/neo_6.png[]
+
+I ran the command
+
+```console
+└──╼ $python3 vol.py -v -f /home/jaden/Desktop/ctf/bank_atm_dump windows.hashdump.Hashdump
+
+```
+image::images/neo_7.png[]
+
+
+As shown above, it returned hashes of users, which were hashed using the lmhash and lthash. Kartik suggested running an online cracker against them, which should be able to crack them. However, they did not return anything interesting. 
+The next thing I decided to look at the process tree 
+
+```console
+└──╼ $sudo python3 vol.py -v -f /home/jaden/Desktop/ctf/bank_atm_dump windows.cmdline.CmdLine
+
+```
+and this is what I got:
+
+image::images/neo_8.png[]
+
+The last few were interesting to me. Why? Because it showed a few open terminals and a notepad. Most sysadmins use Notepad to store passwords, so let’s see what we can get from the CLI history.
+
+image::images/neo_9.png[]
+
+And yes! Sure enough, on the last line, we see a string that looks like a base64 encoded string. 
+On decoding it, this is what I got
+
+image::images/neo_10.png[]
+
+The flag was: flag:esCTF{7h!s_w@s_h!dd3n_!n_7h3_@tm}
+
+
 ```console
 
 ```
