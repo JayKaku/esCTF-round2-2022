@@ -18,10 +18,25 @@ jobs:
             - name: Build site using Asciidoctor
               run: asciidoctor -a webfonts! -o "index.html" "README.adoc"
 
-            - name: Upload GitHub Pages artifact
-              uses: actions/upload-pages-artifact@v1
+            - name: Create Pages artifact
+              shell: sh
+              run: |
+                for f in $(chmod -c -R +r . | awk '{print substr($3, 2, length($3)-2)}'); do
+                  echo "::warning::Added read permission to $f"
+                done
+                tar \
+                    --directory "." \
+                    -cvf "$RUNNER_TEMP/artifact.tar" \
+                    --exclude=.git \
+                    --exclude=.github \
+                    .
+
+            - name: Upload Pages artifact
+              uses: actions/upload-artifact@v3
               with:
-                  path: '.'
+                  name: github-pages
+                  path: ${{ runner.temp }}/artifact.tar
+                  retention-days: 1
 
             - name: Deploy to GitHub Pages
               uses: actions/deploy-pages@v1
