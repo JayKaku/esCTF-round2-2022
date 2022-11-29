@@ -1,7 +1,16 @@
 = esCTF Writeup SOUL
-:toc:
+:toc: left
 :source-highlighter: rouge
 :nofooter:
+
+== Team Members
+
+- https://www.linkedin.com/in/ani-sam[Anirudh Samudrala]
+- https://www.linkedin.com/in/jaden-furtado[Jaden Furtado]
+- https://www.linkedin.com/in/jay-kaku-a33382191[Jay Kaku]
+- https://www.linkedin.com/in/kartiksoneji[Kartik Soneji]
+
+Git Repo: https://github.com/JayKaku/esCTF-round2-2022
 
 <<<
 == "Basic" RSA
@@ -94,11 +103,8 @@ On decoding it, this is what I got
 
 image::images/neo_10.png[]
 
+```text
 The flag was: flag:esCTF{7h!s_w@s_h!dd3n_!n_7h3_@tm}
-
-
-```console
-
 ```
 
 
@@ -106,8 +112,15 @@ The flag was: flag:esCTF{7h!s_w@s_h!dd3n_!n_7h3_@tm}
 <<<
 == Pandora's Box
 
-We recieved a compressed file. On analyzing the file, we noticed that on uncompressing it, we found that it contained another compressed files... Interestingly, after uncompressing the next file, we found that contained one more compressed file! Well the problem name certainly makes sense. It is Pandora's Box of nested files :P
-Well, the only way out of the problem was to script through it(We are extremly lazy and hate manual labour :). However, once we reached the final zip file, our code threw an error as it was password protected. And that's when we hit a dead end regarding how to extract the flag. On reading the question again, one of our team members pointed out that it was mentioned in the question to remeber the path. So, we modified our code to concacenate the name's of each nested file and the result was a Base64 encoded string. On using this string as the password, we were able to unzip the last file and retrieve the flag! 
+We recieved a compressed file. On analyzing the file, we noticed that on uncompressing it, we found that it contained another compressed files...
+Interestingly, after uncompressing the next file, we found that contained one more compressed file! Well the problem name certainly makes sense.
+It is Pandora's Box of nested files :P
+Well, the only way out of the problem was to script through it(We are extremly lazy and hate manual labour :).
+However, once we reached the final zip file, our code threw an error as it was password protected.
+And that's when we hit a dead end regarding how to extract the flag.
+On reading the question again, one of our team members pointed out that it was mentioned in the question to remeber the path.
+So, we modified our code to concacenate the name's of each nested file and the result was a Base64 encoded string.
+On using this string as the password, we were able to unzip the last file and retrieve the flag! 
 
 Code is given below
 
