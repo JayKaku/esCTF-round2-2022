@@ -9,6 +9,8 @@
 <<<
 == "Basic" RSA
 
+We were provided with n, e of the public key  and the flag encrypted using this key. We had to try and break this encryption.
+
 Using RsaCtfTool.
 
 ```console
@@ -22,6 +24,8 @@ Using RsaCtfTool.
 
 <<<
 == Neo's Forensics Training
+
+The problem statement was something along the lines, Neo tried to defraud money out of an ATM machine. However, due to limited time, he was only able to obtain a dump file of the system. Can you help him locate some of it’s secrets
 
 Neos’s Forensics Training
 Step 1:
@@ -204,6 +208,8 @@ Submitting it gives the flag.
 <<<
 == (not so) Free Flag
 
+Here, all we were given was a string, and asked to extract the flag from it.
+
 (the file is called `free.txt` because gmail blocks javascript attachments)
 
 === Code
@@ -270,6 +276,9 @@ And there was our flag esCTF{beccca0b9abc7c8e37d6b185d8b4bace}
 
 <<<
 == KingPin 2.0
+
+The probelm statement was as follows:
+Kingpin has a system that allows you to dump secrets if you enter the correct pin, however, since the last time, he has hidden the verification mechanisms. Can you figure out how to bypass this?
 
 [%hardbreaks]
 From the last round, I knew that KingPin was about a timing attack.
