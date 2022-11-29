@@ -1,0 +1,31 @@
+name: Build and deploy website
+
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch: # Allows manual execution of workflow
+
+jobs:
+    build-deploy-website:
+        if: startsWith(github.ref, 'refs/heads/')
+        runs-on: ubuntu-latest
+        container: "docker://asciidoctor/docker-asciidoctor:latest"
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Build site using Asciidoctor
+              run: asciidoctor -a webfonts! -o "index.html" "README.adoc"
+
+            - name: Install package for Deploy Action
+              run: |
+                  apk update
+                  apk add rsync
+
+            - name: Deploy to GitHub Pages
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  branch: gh-pages
+                  folder: .
+                  clean: true
