@@ -7,10 +7,13 @@ on:
     workflow_dispatch: # Allows manual execution of workflow
 
 jobs:
-    build-deploy-website:
+    build:
         if: startsWith(github.ref, 'refs/heads/')
         runs-on: ubuntu-latest
         container: "docker://asciidoctor/docker-asciidoctor:latest"
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
         steps:
             - name: Checkout code
               uses: actions/checkout@v3
