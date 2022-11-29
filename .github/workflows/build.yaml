@@ -11,6 +11,9 @@ jobs:
         if: startsWith(github.ref, 'refs/heads/')
         runs-on: ubuntu-latest
         container: "docker://asciidoctor/docker-asciidoctor:latest"
+        permissions:
+            pages: write
+            id-token: write 
         environment:
             name: github-pages
             url: ${{ steps.deployment.outputs.page_url }}
