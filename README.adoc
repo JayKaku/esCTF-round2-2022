@@ -1,14 +1,28 @@
 = esCTF Writeup SOUL
 :toc: left
+:icons: font
+:icon-set: fab
 :source-highlighter: rouge
 :nofooter:
 
 == Team Members
 
-- https://www.linkedin.com/in/ani-sam[Anirudh Samudrala]
-- https://www.linkedin.com/in/jaden-furtado[Jaden Furtado]
-- https://www.linkedin.com/in/jay-kaku-a33382191[Jay Kaku]
-- https://www.linkedin.com/in/kartiksoneji[Kartik Soneji]
+=== Anirudh Samudrala
+- icon:github[] https://github.com/ANIS1502
+- icon:linkedin[] https://www.linkedin.com/in/ani-sam
+
+=== Jaden Furtado
+- icon:github[] https://github.com/JadenFurtado
+- icon:linkedin[] https://www.linkedin.com/in/jaden-furtado
+
+=== Jay Kaku
+- icon:github[] https://github.com/JayKaku
+- icon:linkedin[] https://www.linkedin.com/in/jay-kaku-a33382191
+
+=== Kartik Soneji
+- icon:gitlab[] https://gitlab.com/KartikSoneji
+- icon:github[] https://github.com/KartikSoneji
+- icon:linkedin[] https://www.linkedin.com/in/kartiksoneji
 
 Git Repo: https://github.com/JayKaku/esCTF-round2-2022
 
