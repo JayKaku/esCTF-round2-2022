@@ -110,15 +110,16 @@ The flag was: flag:esCTF{7h!s_w@s_h!dd3n_!n_7h3_@tm}
 <<<
 == Pandora's Box
 
-We recieved a compressed file. On analyzing the file, we noticed that on uncompressing it, we found that it contained another compressed files...
-Interestingly, after uncompressing the next file, we found that contained one more compressed file! Well the problem name certainly makes sense.
+We received a compressed file. On analyzing the file, we noticed that on uncompressing it, we found that it contained other compressed files...
+Interestingly, after uncompressing the next file, we found that contained one more compressed file! Well, the problem name certainly makes sense.
 It is Pandora's Box of nested files :P
-Well, the only way out of the problem was to script through it(We are extremly lazy and hate manual labour :).
+Well, the only way out of the problem was to script through it(We are extremely lazy and hate manual labor :).
 However, once we reached the final zip file, our code threw an error as it was password protected.
 And that's when we hit a dead end regarding how to extract the flag.
-On reading the question again, one of our team members pointed out that it was mentioned in the question to remeber the path.
-So, we modified our code to concacenate the name's of each nested file and the result was a Base64 encoded string.
-On using this string as the password, we were able to unzip the last file and retrieve the flag! 
+On reading the question again, one of our team members pointed out that it was mentioned in the question to remember the path.
+So, we modified our code to concatenate the name's of each nested file and the result was a Base64 encoded string.
+On using this string as the password, we were able to unzip the last file and retrieve the flag!
+
 
 Code is given below
 
@@ -229,9 +230,9 @@ flag: esCTF{base64+encoding+is+the+way+to+decode}
 == I have the Power
 
 
-Initially, as it was Side Channel + “Power”, I came across an article https://www.rambus.com/blogs/side-channel-attacks/[here], that served as a starting point for understanding on what Simple Power Analysis (SPA) attack, Differential Power Analysis (DPA) attack was and how it was physically implemented on a chip, ASIC or FPGA, and the paper, https://link.springer.com/article/10.1007/s13389-011-0006-y[here], helped explain the concept along with Correlation Power Al and since we are online it helped us understand what data were we exactly looking at and what we could do with it i.e. the textin_array.npy, traces_array.npy and textout_array.npy.  
+Initially, as it was Side Channel + “Power”, I came across an article https://www.rambus.com/blogs/side-channel-attacks/[here], that served as a starting point for understanding on what Simple Power Analysis (SPA) attack, Differential Power Analysis (DPA) attack was and how it was physically implemented on a chip, ASIC or FPGA, and the paper, https://link.springer.com/article/10.1007/s13389-011-0006-y[here], helped explain the concept along with Correlation Power Analysis and since we are online it helped us understand what data were we exactly looking at and what we could do with it i.e. the textin_array.npy, traces_array.npy and textout_array.npy.  
 
-Since the challenge mentioned that it uses 128-bit AES encryption and the method that was the analysis of the value of power consumed by the chip  Electromagnetic (EM) attack. The next logical step was to find out how CPA attacks were done on AES128 which lead me to a video, https://youtu.be/5Hn2D5lrzVo[here], which explained about attacking AES with Power Analysis but no CPA and at the end of the video he dropped a resource to try it in real life, https://github.com/newaetech/chipwhisperer-jupyter/blob/master/courses/sca101/Lab%203_2%20-%20Recovering%20Data%20from%20a%20Single%20Bit.ipynb[here]. (Side Note: It would have been more helpful had they dropped that link in the description but anyway I took a screenshot of the screen and used online OCR to get almost 97% correct link).
+Since the challenge mentioned that it uses 128-bit AES encryption and the method was the analysis of the value of power consumed by the chip  Electromagnetic (EM) attack. The next logical step was to find out how CPA attacks were done on AES128 which lead me to a video, https://youtu.be/5Hn2D5lrzVo[here], which explained about attacking AES with Power Analysis but no CPA and at the end of the video he dropped a resource to try it in real life, https://github.com/newaetech/chipwhisperer-jupyter/blob/master/courses/sca101/Lab%203_2%20-%20Recovering%20Data%20from%20a%20Single%20Bit.ipynb[here]. (Side Note: It would have been more helpful had they dropped that link in the description but anyway I took a screenshot of the screen and used online OCR to get almost 97% correct link).
 
 The next obvious step was to look around that repo and find something more useful by reading a summary of the previous and learning outcomes of the current one. Quickly I found https://github.com/newaetech/chipwhisperer-jupyter/blob/master/courses/sca101/SOLN_Lab%204_2%20-%20CPA%20on%20Firmware%20Implementation%20of%20AES.ipynb[this] and knew we found what we were looking for (CPA code). I installed the ChipWhisperer tool and soon figured we had all we need. While I was thinking about what needs to be done with textout_array.npy. a teammate pointed out that we could just use it to confirm the AES-128 key that we were looking for.
 (Side Note: Being a true software person at heart, his words were and I quote “Replace any two variables and run the script” period)
