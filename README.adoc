@@ -9,7 +9,7 @@
 <<<
 == "Basic" RSA
 
-We were provided with n, e of the public key  and the flag encrypted using this key. We had to try and break this encryption.
+We were provided with n, e of the RSA public key and the flag encrypted using this key. We had to try and break this encryption.
 
 Using RsaCtfTool.
 
