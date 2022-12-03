@@ -52,7 +52,7 @@ for bnum in range(0, 16):
 		cpaoutput = correlation/(o_t*o_hws)
 		maxcpa[kguess] = max(abs(cpaoutput))
 	key[bnum] = numpy.argmax(maxcpa)
-	print(f"found bit {bnum}")
+	print(f"found byte {bnum}")
 
 print()
 print(f"key: {''.join(f'{b:02x}' for b in key)}")

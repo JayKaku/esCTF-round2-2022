@@ -9,7 +9,7 @@
 <<<
 == "Basic" RSA
 
-We were provided with n, e of the public key  and the flag encrypted using this key. We had to try and break this encryption.
+We were provided with n, e of the RSA public key and the flag encrypted using this key. We had to try and break this encryption.
 
 Using RsaCtfTool.
 
@@ -277,9 +277,6 @@ And there was our flag esCTF{beccca0b9abc7c8e37d6b185d8b4bace}
 
 <<<
 == KingPin 2.0
-
-The probelm statement was as follows:
-Kingpin has a system that allows you to dump secrets if you enter the correct pin, however, since the last time, he has hidden the verification mechanisms. Can you figure out how to bypass this?
 
 [%hardbreaks]
 From the last round, I knew that KingPin was about a timing attack.
